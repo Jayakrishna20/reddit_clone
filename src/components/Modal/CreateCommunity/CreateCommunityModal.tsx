@@ -81,10 +81,10 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({ open, handl
         });
 
         // create communitySnippet on user
-        transaction.set(doc(firestore,`users/${user?.uid}/communitySnippets`,communityName),{
-          communityId:communityName,
-          isModerator:true
-        })
+        transaction.set(doc(firestore, `users/${user?.uid}/communitySnippets`, communityName), {
+          communityId: communityName,
+          isModerator: true,
+        });
       });
     } catch (error: any) {
       console.log("handleCreateCommunity error", error);
@@ -110,7 +110,7 @@ const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({ open, handl
                 Community names including capitalization cannot be changed
               </Text>
               <Text position="relative" top="28px" left="10px" width="20px" color="gray.400">
-                /r
+                r/
               </Text>
               <Input
                 position="relative"
