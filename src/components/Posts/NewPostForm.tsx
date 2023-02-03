@@ -6,8 +6,12 @@ import { IoDocumentText, IoImageOutline } from "react-icons/io5";
 import { AiFillCloseCircle } from "react-icons/ai";
 import TabItem from "./TabItem";
 import TextInputs from "./PostForm/TextInputs";
+import ImageUpload from "./PostForm/ImageUpload";
+import { Post } from "@/src/atoms/postsAtom";
+import { User } from "firebase/auth";
+import { useRouter } from "next/router";
 
-type NewPostFormProps = {};
+type NewPostFormProps = { user?: User | null };
 
 const formTabs: TabItemType[] = [
   { title: "Post", icon: IoDocumentText },
@@ -23,6 +27,7 @@ export type TabItemType = {
 };
 
 const NewPostForm: React.FC<NewPostFormProps> = () => {
+  const router = useRouter()
   const [selectedTab, setSelectedTab] = useState(formTabs[0].title);
   const [textInputs, setTextInputs] = useState({
     title: "",
@@ -31,9 +36,34 @@ const NewPostForm: React.FC<NewPostFormProps> = () => {
   const [selectedFile, setSelectedFile] = useState<string>();
   const [loading, setLoading] = useState(false);
 
-  const handleCreatePost = async () => {};
+  const handleCreatePost = async () => {
 
-  const onSelectImage = () => {};
+    const {communityId}
+    // create new post object => type Post
+    const newPost: Post = {};
+
+    // store the post in db
+
+    // check for selectedFile
+    // store in storage => getDownloadURL(return imageURL)
+    // update post doc by adding imageURL
+
+    // redirect the user back to the communityPage using the router
+  };
+
+  const onSelectImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const reader = new FileReader();
+
+    if (event.target.files?.[0]) {
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    reader.onload = (readerEvent) => {
+      if (readerEvent.target?.result) {
+        setSelectedFile(readerEvent.target.result as string);
+      }
+    };
+  };
 
   const onTextChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
@@ -50,6 +80,7 @@ const NewPostForm: React.FC<NewPostFormProps> = () => {
       <Flex width="100%">
         {formTabs.map((item) => (
           <TabItem
+            key={item.title}
             item={item}
             selected={item.title === selectedTab}
             setSelectedTab={setSelectedTab}
@@ -63,6 +94,14 @@ const NewPostForm: React.FC<NewPostFormProps> = () => {
             handleCreatePost={handleCreatePost}
             onChange={onTextChange}
             loading={loading}
+          />
+        )}
+        {selectedTab === "Images & Video" && (
+          <ImageUpload
+            selectedFile={selectedFile}
+            onSelectImage={onSelectImage}
+            setSelectedFile={setSelectedFile}
+            setSelectedTab={setSelectedTab}
           />
         )}
       </Flex>
