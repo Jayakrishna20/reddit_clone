@@ -35,7 +35,7 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
       setPostStateValue((prev) => ({
         ...prev,
         posts: posts as Post[],
-      }));      
+      }));
     } catch (error: any) {
       console.log("getPosts error", error.message);
     }
@@ -57,7 +57,9 @@ const Posts: React.FC<PostsProps> = ({ communityData }) => {
               key={item.id}
               post={item}
               userIsCreator={user?.uid === item.creatorId}
-              userVoteValue={undefined}
+              userVoteValue={
+                postStateValue.postVotes.find((vote) => vote.postId === item.id)?.voteValue
+              }
               onVote={onVote}
               onDeletePost={onDeletePost}
               onSelectPost={onSelectPost}
