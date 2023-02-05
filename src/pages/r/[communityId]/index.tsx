@@ -28,7 +28,7 @@ const CommunitiesPage: React.FC<CommunitiesPageProps> = ({ communityData }) => {
       ...prev,
       currentCommunity: communityData,
     }));
-  }, []);
+  }, [communityData]);
 
   return (
     <>
