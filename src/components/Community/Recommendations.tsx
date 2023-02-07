@@ -97,7 +97,7 @@ const Recommendations: React.FC = () => {
                       </Flex>
                       <Flex align="center" width="80%">
                         {item.imageURL ? (
-                          <Image src={item.imageURL} borderRadius="full" boxSize="28px" mr={2} />
+                          <Image src={item.imageURL} alt='Image' borderRadius="full" boxSize="28px" mr={2} />
                         ) : (
                           <Icon as={FaReddit} fontSize={30} color="brand.100" mr={2} />
                         )}
