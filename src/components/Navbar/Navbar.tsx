@@ -1,3 +1,4 @@
+import { defaultMenuItem } from "@/src/atoms/directoryMenuAtom";
 import { auth } from "@/src/firebase/clientApp";
 import useDirectory from "@/src/hooks/useDirectory";
 import { Flex, Image } from "@chakra-ui/react";
@@ -16,7 +17,7 @@ const Navbar: React.FC = () => {
         align="center"
         width={{ base: "40px", md: "auto" }}
         mr={{ base: 0, md: 2 }}
-        onClick={() => onSelectMenuItem}
+        onClick={() => onSelectMenuItem(defaultMenuItem)}
         cursor="pointer"
       >
         <Image src="/images/redditFace.svg" height="30px" />
