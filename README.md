@@ -1,6 +1,6 @@
 #Reddit Clone
 
-![Reddit Clone](https://ibb.co/16jM4Zh)
+![Reddit Clone](https://i.ibb.co/TLd1Ncp/r-Cm5-RVYKWVg-HQ.jpg)
 
 [Live Site](https://jk-reddit-clone.vercel.app/)
 
