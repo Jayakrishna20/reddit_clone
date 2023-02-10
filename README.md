@@ -1,4 +1,4 @@
-#Reddit Clone
+# Reddit Clone
 
 ![Reddit Clone](https://i.ibb.co/TLd1Ncp/r-Cm5-RVYKWVg-HQ.jpg)
 
